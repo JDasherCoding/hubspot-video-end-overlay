@@ -1,0 +1,89 @@
+<style>
+	/* Ensure full screen layout and no scrollbars */
+	html,
+	body {
+		margin: 0;
+		padding: 0;
+		overflow: hidden;
+		height: 100%;
+		width: 100%;
+	}
+
+	/* Wrapper around video and overlay — provides positioning context */
+	.video-overlay-wrapper {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+	}
+
+	/* Overlay container (initially hidden, appears after video ends) */
+	.video-overlay {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		display: none; /* JS will set to "flex" on video end */
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		z-index: 10;
+		overflow: hidden;
+	}
+
+	.video-overlay.hidden,
+	#player-container.hidden {
+		display: none;
+	}
+
+	.video-overlay.visible {
+		display: flex; /* Or grid, depending on layout */
+	}
+
+	/* Full-screen thumbnail under the overlay content */
+	.overlay-thumbnail {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		z-index: 0;
+	}
+
+	/* Replay button sits centered on top of the thumbnail */
+	.overlay-content {
+		position: relative;
+		z-index: 1;
+		text-align: center;
+	}
+
+	/* Replay button circle */
+	.replay-button {
+		width: 64px;
+		height: 64px;
+		border-radius: 50%;
+		background-color: #ff0000;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+		transition: transform 0.2s ease;
+	}
+
+	.replay-button:hover {
+		transform: scale(1.1);
+	}
+
+	/* CSS triangle "play" icon inside the button */
+	.replay-icon {
+		width: 0;
+		height: 0;
+		border-left: 14px solid white;
+		border-top: 10px solid transparent;
+		border-bottom: 10px solid transparent;
+		margin-left: 4px;
+	}
+</style>

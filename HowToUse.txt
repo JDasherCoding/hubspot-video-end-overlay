@@ -1,0 +1,5 @@
+Add this to HEAD:
+-- Copy and paste contents of styles.html
+Add this to footer HTML:
+-- <script src='{{ get_asset_url('/hideSuggestedVideos.js') }}'></script>
+
